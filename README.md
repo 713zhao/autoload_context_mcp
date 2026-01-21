@@ -8,6 +8,17 @@ An MCP (Model Context Protocol) server that automatically loads relevant markdow
 - 📚 **Multiple Tools**: Load context automatically, list available docs, or fetch specific files
 - ⚙️ **Configurable**: Easy-to-manage manifest.json for adding new context files
 - 🔄 **Base Context**: Always includes foundational guidelines from base.md
+- 🖥️ **Central Server Mode**: Run on a server, connect from multiple clients (see [SERVER_SETUP.md](SERVER_SETUP.md))
+
+## Setup Options
+
+### Option A: Local Setup (Each PC)
+Run MCP server locally on each machine. Best for individual use.
+
+### Option B: Central Server Setup (Recommended for Teams)
+Run MCP server on one central server, all PCs connect remotely. **No installation needed on client PCs!**
+
+👉 **[See SERVER_SETUP.md for central server instructions](SERVER_SETUP.md)**
 
 ## Setup
 
