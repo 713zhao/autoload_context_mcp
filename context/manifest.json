@@ -1,0 +1,16 @@
+{
+  "docs": [
+    {
+      "path": "context/testing/GTest_Mock.md",
+      "when": ["mock", "gmock", "expect_call"]
+    },
+    {
+      "path": "context/testing/GTest_Execute.md",
+      "when": ["run", "execute", "ctest", "filter"]
+    },
+    {
+      "path": "context/design/Design.md",
+      "when": ["design", "architecture", "module"]
+    }
+  ]
+}
