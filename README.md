@@ -11,43 +11,101 @@ An MCP (Model Context Protocol) server that automatically loads relevant markdow
 
 ## Setup
 
-### 1. Install Dependencies
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/713zhao/autoload_context_mcp.git
+cd autoload_context_mcp
+```
+
+### 2. Install Dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 2. Configure Copilot to Use This MCP
+### 3. Configure GitHub Copilot to Use This MCP
 
-Add to your Copilot settings (in VS Code `settings.json`):
+#### For VS Code:
 
-```json
-{
-  "github.copilot.chat.mcpServers": {
-    "context-loader": {
-      "command": "python",
-      "args": ["c:\\ZJB\\autoload\\mcp_server.py"]
-    }
-  }
-}
-```
+1. **Open VS Code Settings (JSON)**
+   - Press `Ctrl+Shift+P` (or `Cmd+Shift+P` on Mac)
+   - Type "Preferences: Open User Settings (JSON)"
+   - Select it to open your `settings.json` file
 
-Or if using Claude Desktop, add to `claude_desktop_config.json`:
+2. **Add the MCP Server Configuration**
+   
+   Add the following configuration to your settings.json (update the path to match where you cloned the repository):
 
+   ```json
+   {
+     "github.copilot.chat.mcpServers": {
+       "context-loader": {
+         "command": "python",
+         "args": ["/absolute/path/to/autoload_context_mcp/mcp_server.py"]
+       }
+     }
+   }
+   ```
+
+   **Windows Example:**
+   ```json
+   {
+     "github.copilot.chat.mcpServers": {
+       "context-loader": {
+         "command": "python",
+         "args": ["c:\\Users\\YourName\\autoload_context_mcp\\mcp_server.py"]
+       }
+     }
+   }
+   ```
+
+   **Mac/Linux Example:**
+   ```json
+   {
+     "github.copilot.chat.mcpServers": {
+       "context-loader": {
+         "command": "python3",
+         "args": ["/home/username/autoload_context_mcp/mcp_server.py"]
+       }
+     }
+   }
+   ```
+
+3. **Save the settings.json file**
+
+4. **Reload VS Code**
+   - Press `Ctrl+Shift+P` (or `Cmd+Shift+P` on Mac)
+   - Type "Developer: Reload Window"
+   - Press Enter
+
+5. **Verify MCP is Active**
+   - Open Copilot Chat in VS Code
+   - The MCP server should now be available as a tool
+   - Try asking: "How do I write a mock?" to see it automatically load context
+
+#### For Claude Desktop:
+
+Add to your `claude_desktop_config.json`:
+
+**Location:**
+- **Windows:** `%APPDATA%\Claude\claude_desktop_config.json`
+- **Mac:** `~/Library/Application Support/Claude/claude_desktop_config.json`
+- **Linux:** `~/.config/Claude/claude_desktop_config.json`
+
+**Configuration:**
 ```json
 {
   "mcpServers": {
     "context-loader": {
       "command": "python",
-      "args": ["c:\\ZJB\\autoload\\mcp_server.py"]
+      "args": ["/absolute/path/to/autoload_context_mcp/mcp_server.py"]
     }
   }
 }
 ```
 
-### 3. Restart Copilot/Claude
-
-Reload VS Code or restart Claude Desktop to activate the MCP server.
+Restart Claude Desktop after saving.
 
 ## Usage
 
