@@ -4,7 +4,7 @@
     {
       "label": "Load Skill: Google Mock",
       "type": "shell",
-      "command": "python",
+      "command": "${workspaceFolder}/venv/Scripts/python.exe",
       "args": [
         "skills.py",
         "load",
@@ -24,7 +24,7 @@
     {
       "label": "Load Skill: GTest Execute",
       "type": "shell",
-      "command": "python",
+      "command": "${workspaceFolder}/venv/Scripts/python.exe",
       "args": [
         "skills.py",
         "load",
@@ -44,7 +44,7 @@
     {
       "label": "Load Skill: Design",
       "type": "shell",
-      "command": "python",
+      "command": "${workspaceFolder}/venv/Scripts/python.exe",
       "args": [
         "skills.py",
         "load",
@@ -64,7 +64,7 @@
     {
       "label": "List All Skills",
       "type": "shell",
-      "command": "python",
+      "command": "${workspaceFolder}/venv/Scripts/python.exe",
       "args": [
         "skills.py",
         "list"
