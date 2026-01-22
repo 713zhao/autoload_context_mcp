@@ -49,6 +49,12 @@ htmlcov/
 
 # Logs
 *.log
+*.log.*
+
+# Temporary skill context files
+.copilot_context.md
+.skill_temp.md
+*.log
 
 # OS
 Thumbs.db
