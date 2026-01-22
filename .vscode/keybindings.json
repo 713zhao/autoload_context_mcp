@@ -1,0 +1,26 @@
+[
+  {
+    "key": "ctrl+k ctrl+m",
+    "command": "workbench.action.tasks.runTask",
+    "args": "Load Skill: Google Mock",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+k ctrl+e",
+    "command": "workbench.action.tasks.runTask",
+    "args": "Load Skill: GTest Execute",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+k ctrl+d",
+    "command": "workbench.action.tasks.runTask",
+    "args": "Load Skill: Design",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+k ctrl+l",
+    "command": "workbench.action.tasks.runTask",
+    "args": "List All Skills",
+    "when": "editorTextFocus"
+  }
+]

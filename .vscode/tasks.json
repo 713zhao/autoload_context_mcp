@@ -1,0 +1,81 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Load Skill: Google Mock",
+      "type": "shell",
+      "command": "python",
+      "args": [
+        "skills.py",
+        "load",
+        "GTest_Mock",
+        "--output",
+        "copilot"
+      ],
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "showReuseMessage": false,
+        "clear": true,
+        "focus": false
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Load Skill: GTest Execute",
+      "type": "shell",
+      "command": "python",
+      "args": [
+        "skills.py",
+        "load",
+        "GTest_Execute",
+        "--output",
+        "copilot"
+      ],
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "showReuseMessage": false,
+        "clear": true,
+        "focus": false
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Load Skill: Design",
+      "type": "shell",
+      "command": "python",
+      "args": [
+        "skills.py",
+        "load",
+        "Design",
+        "--output",
+        "copilot"
+      ],
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "showReuseMessage": false,
+        "clear": true,
+        "focus": false
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "List All Skills",
+      "type": "shell",
+      "command": "python",
+      "args": [
+        "skills.py",
+        "list"
+      ],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared",
+        "showReuseMessage": false,
+        "clear": true
+      },
+      "problemMatcher": []
+    }
+  ]
+}
