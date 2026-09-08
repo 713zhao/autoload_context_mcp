@@ -56,6 +56,9 @@ htmlcov/
 .skill_temp.md
 *.log
 
+# Test folder
+test/
+
 # OS
 Thumbs.db
 desktop.ini

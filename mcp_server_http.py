@@ -222,7 +222,7 @@ def main(host: str = "0.0.0.0", port: int = 7000):
     print("\nClients should configure:")
     print(f'  "url": "http://{host}:{port}/sse"')
     print("\nPress Ctrl+C to stop")
-    
+    8888
     uvicorn.run(app, host=host, port=port)
 
 if __name__ == "__main__":

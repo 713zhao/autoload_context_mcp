@@ -1,6 +1,6 @@
-# Context-Aware MCP Server
+# Context-Aware MCP Server & Agent Skills
 
-An MCP (Model Context Protocol) server that automatically loads relevant markdown context files as guidelines for GitHub Copilot.
+An MCP (Model Context Protocol) server that automatically loads relevant markdown context files as guidelines for GitHub Copilot, with support for GitHub Copilot Agent Skills.
 
 ## Features
 
@@ -9,13 +9,21 @@ An MCP (Model Context Protocol) server that automatically loads relevant markdow
 - ⚙️ **Configurable**: Easy-to-manage manifest.json for adding new context files
 - 🔄 **Base Context**: Always includes foundational guidelines from base.md
 - 🖥️ **Central Server Mode**: Run on a server, connect from multiple clients (see [SERVER_SETUP.md](SERVER_SETUP.md))
+- ✨ **Agent Skills Support**: VS Code automatically loads skills from `.github/skills` (no setup required!)
 
 ## Setup Options
 
-### Option A: Local Setup (Each PC)
-Run MCP server locally on each machine. Best for individual use.
+### Option A: Agent Skills (Recommended - Zero Setup!)
+VS Code automatically discovers and loads skills from `.github/skills/`. **No configuration needed!**
 
-### Option B: Central Server Setup (Recommended for Teams)
+Just commit the `.github/skills` folder to your repository and Copilot will automatically use them.
+
+👉 **[See Agent Skills Documentation](#agent-skills-automatic-loading)** below for details.
+
+### Option B: MCP Server - Local Setup (Each PC)
+Run MCP server locally on each machine. Best for individual use or Claude Desktop.
+
+### Option C: MCP Server - Central Server Setup (Teams)
 Run MCP server on one central server, all PCs connect remotely. **No installation needed on client PCs!**
 
 👉 **[See SERVER_SETUP.md for central server instructions](SERVER_SETUP.md)**
@@ -120,9 +128,28 @@ Restart Claude Desktop after saving.
 
 ## Usage
 
+### Using Agent Skills (Automatic)
+
+When Agent Skills are committed to your repository in `.github/skills/`, Copilot automatically loads them when relevant:
+
+```
+Ask Copilot: "How do I create a mock class?"
+→ Copilot automatically loads gtest-mock skill
+
+Ask Copilot: "How do I run tests with filters?"
+→ Copilot automatically loads gtest-execute skill
+
+Ask Copilot: "What design patterns should I use?"
+→ Copilot automatically loads design-guidelines skill
+```
+
+**No special commands needed!** Just ask your question and Copilot intelligently loads the right skill based on your prompt.
+
+### Using MCP Server (Manual)
+
 Once configured, you can use these tools in Copilot Chat:
 
-### Load Context Automatically
+#### Load Context Automatically
 ```
 @workspace How do I write a mock for my function?
 ```
@@ -188,3 +215,73 @@ autoload/
 - GTest_Execute.md (matched "run", "execute", "filter")
 
 The loaded context guides Copilot's response with your specific guidelines and best practices.
+
+## Agent Skills (Automatic Loading)
+
+### What are Agent Skills?
+
+Agent Skills are an [open standard](https://github.com/agentskills/agentskills) used by GitHub Copilot, Claude, and other AI agents. Skills are automatically discovered and loaded when relevant to your prompt.
+
+### Available Skills in This Project
+
+Located in `.github/skills/`:
+
+1. **gtest-mock** - Google Mock (gmock) guide
+   - Creating mock classes with MOCK_METHOD
+   - Setting up EXPECT_CALL expectations
+   - Matchers and cardinality
+   - Best practices for mocking
+
+2. **gtest-execute** - Google Test execution and coverage
+   - Running tests with filters
+   - Achieving 100% CTC coverage
+   - Test documentation standards
+   - Boundary and input testing strategies
+
+3. **design-guidelines** - Software design principles
+   - Architecture patterns
+   - Module structure
+   - Dependency injection
+   - Best practices and design review checklist
+
+### How Agent Skills Work
+
+1. **Automatic Discovery**: VS Code scans `.github/skills/` folders in your repository
+2. **Intelligent Loading**: When you ask a question, Copilot matches keywords in your prompt to skill descriptions
+3. **Context Injection**: Relevant skills are automatically loaded into Copilot's context
+4. **No Configuration**: Works automatically - no settings.json changes needed!
+
+### Adding New Agent Skills
+
+1. Create a new subdirectory in `.github/skills/`
+   ```bash
+   mkdir .github/skills/your-skill-name
+   ```
+
+2. Create `SKILL.md` with YAML frontmatter:
+   ```markdown
+   ---
+   name: your-skill-name
+   description: What this skill does and when to use it. Include trigger keywords.
+   ---
+
+   # Your Skill Content
+
+   Documentation, examples, and guidelines here...
+   ```
+
+3. Commit to your repository - Copilot will automatically discover it!
+
+### Agent Skills vs MCP Server
+
+| Feature | Agent Skills | MCP Server |
+|---------|-------------|------------|
+| **Setup Required** | None | Settings.json config |
+| **Works In** | VS Code, GitHub Copilot | VS Code, Claude Desktop |
+| **Discovery** | Automatic | Manual tool invocation |
+| **Storage** | `.github/skills/` in repo | `context/` folder |
+| **Best For** | Teams, shared repos | Personal, legacy support |
+
+**Recommendation**: Use Agent Skills for new projects - they require zero setup and work automatically!
+
+## MCP Server Setup (Alternative Method)

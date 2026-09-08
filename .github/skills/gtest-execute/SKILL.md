@@ -1,5 +1,9 @@
-# GTest Execute
-How to run and filter Google Tests.
+---
+name: gtest-execute
+description: Guide for running and filtering Google Tests, achieving 100% CTC coverage, and documenting test cases. Use this when asked to run tests, filter tests, achieve code coverage, or write test documentation.
+---
+
+# Google Test Execution and Coverage Guide
 
 ## Test Case Creation Guidelines
 
